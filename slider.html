@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+		</script>
+        <title>Everything about callbacks</title>
+	</head>
+	<style type="text/css">
+		.ItemsDeptCont 
+		{
+		    display: table;
+		    margin: 0px auto;
+		    width: 600px;
+		    position: relative;
+		}
+		.ItemsCont
+		{
+			border: 1px solid beige;
+		}
+		.ItemsWrapper 
+		{
+		  display: table-cell;
+		}
+		.ItemsListContainer
+		{    width: 400px;
+		    margin: 0px auto;
+		    overflow: scroll;
+		}
+		.slick_prev,.slick_next
+		{
+			width: 45px;
+			height: 45px;
+			cursor: pointer;
+		    position: absolute;
+			line-height: 45px;
+			border: 1px solid black;
+			font-size: 24px;
+		    top: 32%;
+		}
+
+		.slick_next{
+			right: 0;
+			padding: 0 0px 0 8px;
+		}
+		.slick_prev {
+    		padding: 0px 0px 0px 8px;
+    		left: 0;
+		}
+	</style>
+	<body cz-shortcut-listen="true">
+		<div class="ItemsDeptCont style="display: table;">
+			<div class="ItemsListContainer">
+				<div class="ItemsWrapper" style="height: auto;">
+					<div class="ItemsCont">
+						<div class="ItemsImgCont"> 
+							<img itemprop="image" class="img" src="//s3.amazonaws.com/uploads.hipchat.com/49247/3342004/v2LyNhc7f2zwtgC/placehold.gif">
+						</div>
+						<div class="ItemsDetailsCont">
+							<div class="PriceCont">
+								<div class="price">159.99</div>
+								<div class="orgPrice ">380.00</div>
+							</div>
+						</div>
+					</div>
+				</div>         
+				<div class="ItemsWrapper" style="height: auto;">
+					<div class="ItemsCont">
+						<div class="ItemsImgCont"> 
+							<img itemprop="image" class="img" src="//s3.amazonaws.com/uploads.hipchat.com/49247/3342004/v2LyNhc7f2zwtgC/placehold.gif">
+						</div>
+						<div class="ItemsDetailsCont">
+							<div class="PriceCont">
+								<div class="price">159.99</div>
+								<div class="orgPrice ">380.00</div>
+							</div>
+						</div>
+					</div>
+				</div>       
+				<div class="ItemsWrapper" style="height: auto;">
+					<div class="ItemsCont">
+						<div class="ItemsImgCont"> 
+							<img itemprop="image" class="img" src="//s3.amazonaws.com/uploads.hipchat.com/49247/3342004/v2LyNhc7f2zwtgC/placehold.gif">
+						</div>
+						<div class="ItemsDetailsCont">
+							<div class="PriceCont">
+								<div class="price">159.99</div>
+								<div class="orgPrice ">380.00</div>
+							</div>
+						</div>
+					</div>
+				</div>       
+				<div class="ItemsWrapper" style="height: auto;">
+					<div class="ItemsCont">
+						<div class="ItemsImgCont"> 
+							<img itemprop="image" class="img" src="//s3.amazonaws.com/uploads.hipchat.com/49247/3342004/v2LyNhc7f2zwtgC/placehold.gif">
+						</div>
+						<div class="ItemsDetailsCont">
+							<div class="PriceCont">
+								<div class="price">159.99</div>
+								<div class="orgPrice ">380.00</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="slick_next" role="button" aria-label="next">&#8669;</div>
+			<div class="slick_prev" role="button" aria-label="previous">&#8668;</div>
+		</div>
+</body>
+<script type="text/javascript">
+	$( document ).ready(function() {
+	    $('.slick_next').unbind('click').bind('click', function(){
+	        slickNextPrev(this, "next");
+	    });
+	    $('.slick_prev').unbind('click').bind('click', function(){
+	        slickNextPrev(this, "prev");
+	    });
+	    slickNextPrev = function(element, direction)
+	    {
+	        var directionVal = (direction == "next") ? "+=" : "-=";
+	        var parentEle = $(element).parents('.ItemsDeptCont');
+			var itemWrapperLength = $(parentEle).find('.ItemsWrapper').length;
+			var itemWrapperWidth = $($(parentEle).find('.ItemsWrapper')[0]).outerWidth();
+
+	        $(parentEle).find('.ItemsListContainer').animate({scrollLeft: directionVal + itemWrapperWidth});
+	    }
+	});
+</script>
+</html>
